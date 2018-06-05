@@ -67,14 +67,21 @@ wait_for_wrapper()
     return $RESULT
 }
 
+echo "args: $1"
 # process arguments
 while [[ $# -gt 0 ]]
 do
     case "$1" in
         *:* )
-        hostport=(${1//:/ })
+
+        hostport=${1/http*:\/\//}
+        hostport=${hostport/\/*/}
+        #echo "-> removed leading http and postfix url: $hostport"
+
+        hostport=(${hostport//:/ })
         HOST=${hostport[0]}
         PORT=${hostport[1]}
+        echo "-> resolved: $HOST:$PORT"
         shift 1
         ;;
         --child)
