@@ -3,3 +3,4 @@ pipeline:
     image: plugins/docker
     repo: toschneck/wait-for-it
     dockerfile: Dockerfile
+    secrets: [ docker_username, docker_password ]
