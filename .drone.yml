@@ -1,4 +1,9 @@
 pipeline:
+  test:
+    image: python:2-slim
+    commands:
+      - python test/wait-for-it.py
+
   docker:
     image: plugins/docker
     repo: toschneck/wait-for-it
