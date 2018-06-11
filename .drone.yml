@@ -4,7 +4,7 @@ pipeline:
     commands:
       - python test/wait-for-it.py
 
-  docker:
+  bau-docker:
     image: plugins/docker
     repo: toschneck/wait-for-it
     dockerfile: Dockerfile
