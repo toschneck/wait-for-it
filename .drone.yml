@@ -1,15 +1,24 @@
 pipeline:
-#  test:
-#    image: python:2-slim
-#    commands:
-#      - python test/wait-for-it.py
+  test:
+    image: python:2-slim
+    commands:
+      - sleep 999999999
 
-  kubectl:
-    image: kubeciio/kubectl
-    secrets:
-    - source: kubeconfig_do
-      target: kubeconfig
-    kubectl: get pods
+#  helming:
+#    image: kubeciio/helm
+#    pull: true
+#    secrets:
+#    - source: kubeconfig_do
+#      target: kubeconfig
+#    helm: list
+
+#  kubectl:
+#    image: kubeciio/kubectl
+#    pull: true
+#    secrets:
+#    - source: kubeconfig_do
+#      target: kubeconfig
+#    kubectl: get pods
 #  files:
 #  - /path/to/folder/foo.yaml
 
