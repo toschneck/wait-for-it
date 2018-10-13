@@ -2,7 +2,7 @@ pipeline:
   test:
     image: python:2-slim
     commands:
-      - sleep 999999999
+      - env
 
 #  helming:
 #    image: kubeciio/helm
@@ -12,13 +12,13 @@ pipeline:
 #      target: kubeconfig
 #    helm: list
 
-#  kubectl:
-#    image: kubeciio/kubectl
-#    pull: true
-#    secrets:
-#    - source: kubeconfig_do
-#      target: kubeconfig
-#    kubectl: get pods
+  kubectl:
+    image: kubeciio/kubectl
+    pull: true
+    secrets:
+    - source: kubeconfig_do
+      target: kubeconfig
+    kubectl: get pods
 #  files:
 #  - /path/to/folder/foo.yaml
 
