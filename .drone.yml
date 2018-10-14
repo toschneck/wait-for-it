@@ -15,9 +15,9 @@ pipeline:
   kubectl:
     image: toschneck/kubectl:2.2
     pull: true
-#    secrets:
-#    - source: kubeconfig_do
-#      target: kubeconfig
+    secrets:
+    - source: kubeconfig_do
+      target: kubeconfig
     kubectl: get pods
 #  files:
 #  - /path/to/folder/foo.yaml
