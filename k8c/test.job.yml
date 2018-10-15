@@ -1,0 +1,19 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  labels:
+    run: wait-for-it
+  name: wait-for-it
+spec:
+  activeDeadlineSeconds: 100
+  template:
+    metadata:
+      labels:
+        run: wait-for-it
+    spec:
+      restartPolicy: Never
+      containers:
+      - args:
+        - "http://kubeci.io:80"
+        image: toschneck/wait-for-it
+        name: wait-for-it

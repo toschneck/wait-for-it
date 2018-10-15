@@ -18,9 +18,10 @@ pipeline:
     secrets:
     - source: kubeconfig_do
       target: kubeconfig
-    kubectl: get pods
-#  files:
-#  - /path/to/folder/foo.yaml
+    debug: true
+    kubectl: apply
+    files:
+    - /k8c/test.job.yml
 
 #  build-docker:
 ##    image: plugins/docker
