@@ -4,15 +4,7 @@ pipeline:
     commands:
       - env
 
-#  helming:
-#    image: kubeciio/helm
-#    pull: true
-#    secrets:
-#    - source: kubeconfig_do
-#      target: kubeconfig
-#    helm: list
-
-  kubectl:
+  kubectl-apply-job:
     image: toschneck/kubectl:2.2
     pull: true
     secrets:
@@ -22,6 +14,39 @@ pipeline:
     kubectl: apply
     files:
     - k8c/test.job.yml
+
+  kubectl-check-job:
+    image: toschneck/kubectl:2.2
+    pull: true
+    secrets:
+    - source: kubeconfig_do
+      target: kubeconfig
+    debug: true
+    kubectl: wait --for=condition=Complete
+    files:
+    - k8c/test.job.yml
+
+  kubectl-delete-job:
+    image: toschneck/kubectl:2.2
+    pull: true
+    secrets:
+    - source: kubeconfig_do
+      target: kubeconfig
+    debug: true
+    kubectl: delete
+    files:
+    - k8c/test.job.yml
+    when:
+      status:  [ failure, success ]
+
+
+#  helming:
+#    image: kubeciio/helm
+#    pull: true
+#    secrets:
+#    - source: kubeconfig_do
+#      target: kubeconfig
+#    helm: list
 
 #  build-docker:
 ##    image: plugins/docker
