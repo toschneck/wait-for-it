@@ -5,7 +5,7 @@ pipeline:
       - python test/wait-for-it.py
 
   kubectl-apply-job:
-    image: toschneck/kubectl:2.2
+    image: kubeciio/kubectl:0.2.2
     pull: true
     secrets:
     - source: kubeconfig_do
@@ -16,7 +16,7 @@ pipeline:
     - k8c/test.job.yml
 
   kubectl-check-job:
-    image: toschneck/kubectl:2.2
+    image: kubeciio/kubectl:0.2.2
     pull: true
     secrets:
     - source: kubeconfig_do
@@ -26,7 +26,7 @@ pipeline:
     - k8c/test.job.yml
 
   kubectl-get-job-logs:
-    image: toschneck/kubectl:2.2
+    image: kubeciio/kubectl:0.2.2
     pull: true
     secrets:
     - source: kubeconfig_do
@@ -34,7 +34,7 @@ pipeline:
     kubectl: logs --selector job-name=wait-for-it
 
   kubectl-delete-job:
-    image: toschneck/kubectl:2.2
+    image: kubeciio/kubectl:0.2.2
     pull: true
     secrets:
     - source: kubeconfig_do
