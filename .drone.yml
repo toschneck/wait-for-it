@@ -4,17 +4,17 @@ pipeline:
     commands:
       - python test/wait-for-it.py
 
-  build-docker:
-#    image: plugins/docker
-    image: toschneck/img
-    privileged: true
-    pull: true
-    repo: toschneck/wait-for-it
-    tag: testa
-    dockerfile: Dockerfile
-#    secrets: [ docker_username, docker_password ]
-#    when:
-#      instance: drone-orig.eu.ngrok.io
+#  build-docker:
+##    image: plugins/docker
+#    image: toschneck/img
+#    privileged: true
+#    pull: true
+#    repo: toschneck/wait-for-it
+#    tag: testa
+#    dockerfile: Dockerfile
+##    secrets: [ docker_username, docker_password ]
+##    when:
+##      instance: drone-orig.eu.ngrok.io
 
   kubectl-apply-job:
     image: kubeciio/kubectl:0.2.2
