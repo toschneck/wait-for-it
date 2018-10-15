@@ -10,7 +10,7 @@ pipeline:
     secrets:
     - source: kubeconfig_do
       target: kubeconfig
-    debug: true
+#    debug: true
     kubectl: apply
     files:
     - k8c/test.job.yml
@@ -21,10 +21,17 @@ pipeline:
     secrets:
     - source: kubeconfig_do
       target: kubeconfig
-    debug: true
     kubectl: wait --for=condition=Complete
     files:
     - k8c/test.job.yml
+
+  kubectl-get-job-logs:
+    image: toschneck/kubectl:2.2
+    pull: true
+    secrets:
+    - source: kubeconfig_do
+      target: kubeconfig
+    kubectl: logs --selector job-name=wait-for-it
 
   kubectl-delete-job:
     image: toschneck/kubectl:2.2
@@ -32,7 +39,6 @@ pipeline:
     secrets:
     - source: kubeconfig_do
       target: kubeconfig
-    debug: true
     kubectl: delete
     files:
     - k8c/test.job.yml
@@ -56,3 +62,4 @@ pipeline:
 #    repo: toschneck/wait-for-it
 #    dockerfile: Dockerfile
 #    secrets: [ docker_username, docker_password ]
+  #when http://drone-orig.eu.ngrok.io
