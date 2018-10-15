@@ -21,7 +21,7 @@ pipeline:
     debug: true
     kubectl: apply
     files:
-    - /k8c/test.job.yml
+    - k8c/test.job.yml
 
 #  build-docker:
 ##    image: plugins/docker
