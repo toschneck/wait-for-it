@@ -15,5 +15,5 @@ spec:
       containers:
       - args:
         - "http://kubeci.io:80"
-        image: toschneck/wait-for-it
+        image: toschneck/wait-for-it:testa
         name: wait-for-it
